@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import './App.css'
 import firebase from './firebase.js';
 
-
 class Form extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             commentCards: [],
             guestName: '',
-            guestComment: ''
+            guestComment: '',
+            timeStamp: Date(Date.now()).slice(4, 21)
         }
     }
 
@@ -27,15 +27,18 @@ class Form extends Component {
         event.preventDefault();
         const nameToBeAdded = this.state.guestName;
         const commentToBeAdded = this.state.guestComment;
+        const timeToBeAdded = this.state.timeStamp;
 
         if (this.state.guestName !== '' && this.state.guestComment) {
-            firebase.database().ref().push({ 'name': nameToBeAdded, 'comment': commentToBeAdded })
+            firebase.database().ref().push({ 'name': nameToBeAdded, 'comment': commentToBeAdded, 'time': timeToBeAdded })
             this.setState({
                 guestName: '',
-                guestComment: ''
+                guestComment: '',
+                timeStamp: Date(Date.now()).slice(4, 21)
             })
         }
     }
+
 
     render() {
         return (
