@@ -12,10 +12,12 @@ class List extends Component {
                             <div>{item.guestName}</div>
                             <div>{item.guestComment}</div>
                             <div>{item.timeStamp}</div>
-                            {/* <div>{item.videoURL}</div> */}
-                            <video width="320" height="240" controls>
-                                <source src={item.videoURL} type="video/webm" />
-                            </video>
+                            <div>{item.videoURL}</div>
+                            <div className="videoComment">
+                                <video width="320" height="240" controls>
+                                    <source src={item.videoURL} type="video/webm" />
+                                </video>
+                            </div>
                         </li>
                     )
                 })}

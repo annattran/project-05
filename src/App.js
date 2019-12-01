@@ -11,9 +11,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      commentCards: [],
-      guestName: '',
-      guestComment: ''
+      commentCards: []
     }
   }
 
@@ -30,7 +28,7 @@ class App extends Component {
           guestName: snapshot.child(key).child('name').val(),
           guestComment: snapshot.child(key).child('comment').val(),
           timeStamp: snapshot.child(key).child('time').val(),
-          videoURL: 'url placeholder'
+          videoURL: snapshot.child(key).child('video').child([0]).val()
         }
         newComments.push(commentObject);
         // console.log(newComments)
