@@ -81,6 +81,14 @@ class App extends Component {
       console.log('finished recording: ', this.player.recordedData);
 
       // this.player.record().saveAs({ 'video': 'my-video-file-name.webm' });
+
+      const storageRef = firebase.storage().ref();
+      const videoID = this.player.recordedData.name;
+      const videoRef = storageRef.child('video/' + videoID);
+      const file = this.player.recordedData;
+      videoRef.put(file).then(function(snapshot) {
+        console.log('uploaded a blob file!')
+      });
     });
 
     // error handling
