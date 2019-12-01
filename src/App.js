@@ -13,8 +13,7 @@ class App extends Component {
     this.state = {
       commentCards: [],
       guestName: '',
-      guestComment: '',
-      timeStamp: Date(Date.now()).slice(4, 21)
+      guestComment: ''
     }
   }
 
@@ -30,17 +29,15 @@ class App extends Component {
           uniqueID: key,
           guestName: snapshot.child(key).child('name').val(),
           guestComment: snapshot.child(key).child('comment').val(),
-          timeStamp: snapshot.child(key).child('time').val()
+          timeStamp: snapshot.child(key).child('time').val(),
+          videoURL: 'url placeholder'
         }
         newComments.push(commentObject);
         // console.log(newComments)
       }
 
       this.setState({
-        commentCards: newComments,
-        guestName: '',
-        guestComment: '',
-        timeStamp: Date(Date.now()).slice(4, 21)
+        commentCards: newComments
       })
 
     })

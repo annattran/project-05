@@ -55,6 +55,11 @@ class Form extends Component {
             const videoID = this.player.recordedData.name;
             const videoRef = storageRef.child('video/' + videoID);
             const file = this.player.recordedData;
+
+            storageRef.child('video/' + videoID).getDownloadURL().then( (url) => {
+                console.log(url)
+            })
+            
             videoRef.put(file).then(function (snapshot) {
                 console.log('uploaded a blob file!')
             });
