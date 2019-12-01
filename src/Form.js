@@ -55,14 +55,17 @@ class Form extends Component {
             const videoID = this.player.recordedData.name;
             const videoRef = storageRef.child('video/' + videoID);
             const file = this.player.recordedData;
-
-            storageRef.child('video/' + videoID).getDownloadURL().then( (url) => {
-                console.log(url)
-            })
+            const upload = videoRef.put(file);
             
-            videoRef.put(file).then(function (snapshot) {
+            const videoURLS = [];
+            const url = upload.then( (snapshot) => {
                 console.log('uploaded a blob file!')
+                snapshot.ref.getDownloadURL().then( (url) => {
+                    console.log(url);
+                    videoURLS.push(url);
+                });
             });
+            console.log(videoURLS);
         });
 
         // error handling
