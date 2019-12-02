@@ -49,6 +49,7 @@ class Form extends Component {
             // can be downloaded by the user, stored on server etc.
             // console.log('finished recording: ', this.player.recordedData);
 
+            alert('Thank you for your video! Please wait until the video is done uploading before clicking submit!')
             // this.player.record().saveAs({ 'video': 'my-video-file-name.webm' });
             const file = this.player.recordedData;
             const storageRef = firebase.storage().ref();
@@ -63,6 +64,25 @@ class Form extends Component {
                     // console.log(url);
                     newURLS.push(url);
                 });
+            });
+
+            upload.on('state_changed', function (snapshot) {
+                // Observe state change events such as progress, pause, and resume
+                // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + progress + '% done');
+                switch (snapshot.state) {
+                    case firebase.storage.TaskState.PAUSED: // or 'paused'
+                        console.log('Upload is paused');
+                        break;
+                    case firebase.storage.TaskState.RUNNING: // or 'running'
+                        console.log('Upload is running');
+                        break;
+                }
+            }, function (error) {
+                alert('Video did not upload successfully.')
+            }, function () {
+                alert('Video is done uploading. You may now click submit.')
             });
 
             // console.log(newURLS);
@@ -99,6 +119,10 @@ class Form extends Component {
     }
 
     onSubmit = (event) => {
+        console.log(this.player.recordedData !== undefined)
+        console.log(this.state.guestName !== '')
+        console.log(this.state.guestComment !== '')
+        
         event.preventDefault();
         const nameToBeAdded = this.state.guestName;
         const commentToBeAdded = this.state.guestComment;
@@ -106,8 +130,9 @@ class Form extends Component {
         const videoToBeAdded = this.state.videos;
         console.log(videoToBeAdded);
 
-        if (this.state.guestName !== '' && 
-        (this.state.guestComment !== '' && this.player.recordedData !== undefined)) {
+        if (this.player.recordedData !== undefined
+            && this.state.guestName !== '' 
+            && this.state.guestComment !== '') {
             firebase.database().ref().push({ 
                 'name': nameToBeAdded, 
                 'comment': commentToBeAdded, 
@@ -118,7 +143,7 @@ class Form extends Component {
                 guestName: '',
                 guestComment: '',
                 timeStamp: Date(Date.now()).slice(4, 21),
-                video: this.player.recordedData
+                video: this.player.record().reset()
             })
         } else {
             alert('Please record a video message and add your name and comment to our guestbook!')
