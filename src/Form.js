@@ -123,7 +123,6 @@ class Form extends Component {
         event.preventDefault();
         const firstForm = document.querySelector('.firstForm')
         const secondForm = document.querySelector('.secondForm')
-        const commentButton = document.querySelector('.commentButton')
 
         if (this.player.recordedData !== undefined) {
             firstForm.style.display = 'none';
@@ -166,6 +165,7 @@ class Form extends Component {
             const mm = time.getMinutes();
             let h = hh;
             let dd = "AM";
+            let m = mm;
             if (h >= 12) {
                 h = hh - 12;
                 dd = "PM";
@@ -173,7 +173,10 @@ class Form extends Component {
             if (h === 0) {
                 h = 12
             }
-            return `${h}:${mm} ${dd}`
+            if (m.length === 1) {
+                m = '0' + mm
+            }
+            return `${h}:${m} ${dd}`
         }
 
         if (this.player.recordedData !== undefined
