@@ -126,7 +126,6 @@ class Form extends Component {
         event.preventDefault();
         const nameToBeAdded = this.state.guestName;
         const commentToBeAdded = this.state.guestComment;
-        const timeToBeAdded = this.state.timeStamp;
         const videoToBeAdded = this.state.videos;
         console.log(videoToBeAdded);
 
@@ -152,13 +151,13 @@ class Form extends Component {
             firebase.database().ref().push({ 
                 'name': nameToBeAdded, 
                 'comment': commentToBeAdded, 
-                'time': timeToBeAdded,
+                'time': formatDate(Date.now()),
                 'video': videoToBeAdded
             })
             this.setState({
                 guestName: '',
                 guestComment: '',
-                timeStamp: formatDate(Date.now()),
+                timeStamp: '',
                 video: this.player.record().reset()
             })
         } else {

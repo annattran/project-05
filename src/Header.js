@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css'
 import leaf from './assets/leaf-01.png';
-import foil from './assets/foil.jpg';
 
 
 class Header extends Component {
@@ -18,8 +17,8 @@ class Header extends Component {
     render() {
         return (
             <header>
-                <img src={leaf} className="left leaf" />
-                <img src={leaf} className="right leaf" />
+                <img src={leaf} className="left leaf" alt="Green leaves in watercolor - positioned on the top left corner to frame the title." />
+                <img src={leaf} className="right leaf" alt="Green leaves in watercolor - positioned on the bottom right corner to frame the title. " />
                 <div className="button">
                     <button onClick={this.onClick}> Add Comment</button>
                 </div>
