@@ -18,7 +18,7 @@ class Form extends Component {
         this.state = {
             guestName: '',
             guestComment: '',
-            timeStamp: Date(Date.now()).slice(4, 21),
+            timeStamp: '',
             video: []
         }
     }
@@ -130,6 +130,22 @@ class Form extends Component {
         const videoToBeAdded = this.state.videos;
         console.log(videoToBeAdded);
 
+        const formatDate = function(date) {
+            const time = new Date(date);
+            const hh = time.getHours();
+            const mm = time.getMinutes();
+            let h = hh;
+            let dd = "AM";
+            if (h >= 12) {
+                h = hh - 12;
+                dd = "PM";
+            }
+            if (h === 0) {
+                h = 12
+            }
+            return `${h}:${mm} ${dd}`
+        }
+
         if (this.player.recordedData !== undefined
             && this.state.guestName !== '' 
             && this.state.guestComment !== '') {
@@ -142,7 +158,7 @@ class Form extends Component {
             this.setState({
                 guestName: '',
                 guestComment: '',
-                timeStamp: Date(Date.now()).slice(4, 21),
+                timeStamp: formatDate(Date.now()),
                 video: this.player.record().reset()
             })
         } else {
