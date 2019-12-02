@@ -5,19 +5,19 @@ import './App.css'
 class List extends Component {
     render() {
         return (
-            <ul>
+            <ul className="commentsSection">
                 {this.props.listItems.map((item, i) => {
                     return (
-                        <li key={i}>
+                        <li key={i} className="commentCard">
                             <div className="videoComment">
                                 <video width="320" height="240" controls>
                                     <source src={item.videoURL} type="video/webm" />
                                 </video>
                             </div>
                             <div className="writtenComment">
-                                <div>{item.guestName}</div>
-                                <div>{item.guestComment}</div>
-                                <div>{item.timeStamp}</div>
+                                <p>{item.guestComment}</p>
+                                <p>{item.guestName}</p>
+                                <p className="timeStamp">{item.timeStamp}</p>
                                 {/* <div>{item.videoURL}</div> */}
                             </div>
                         </li>

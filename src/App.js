@@ -5,6 +5,7 @@ import firebase from './firebase.js';
 import Header from './Header.js';
 import Form from './Form.js';
 import List from './List.js';
+import Footer from './Footer.js'
 
 
 class App extends Component {
@@ -61,6 +62,7 @@ class App extends Component {
         <Header />
         <Form {...videoJsOptions} />
         <List listItems={this.state.commentCards} />
+        <Footer />
       </div>
     );
   }
