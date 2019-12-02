@@ -10,7 +10,8 @@ import RecordRTC from 'recordrtc';
 import 'videojs-record/dist/css/videojs.record.css';
 import Record from 'videojs-record/dist/videojs.record.js';
 
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 class Form extends Component {
     constructor() {
@@ -122,12 +123,26 @@ class Form extends Component {
         event.preventDefault();
         const firstForm = document.querySelector('.firstForm')
         const secondForm = document.querySelector('.secondForm')
+        const commentButton = document.querySelector('.commentButton')
 
         if (this.player.recordedData !== undefined) {
             firstForm.style.display = 'none';
             secondForm.style.display = 'flex';
         } else {
             alert(`No video recorded. Please try again.`);
+        }
+    }
+
+    onClose = (event) => {
+        const firstForm = document.querySelector('.firstForm')
+        const commentButton = document.querySelector('.commentButton')
+        if (this.player.recordedData === undefined) {
+            firstForm.style.display = 'none';
+            commentButton.style.display = 'block';
+        } else if (window.confirm('You recorded a video but have not submitted. Click ok if you wish to cancel.') === true) {
+            firstForm.style.display = 'none';
+            commentButton.style.display = 'block';
+            this.player.record().reset();
         }
     }
 
@@ -196,6 +211,7 @@ class Form extends Component {
         return (
             <div className="forms">
                 <form onSubmit={this.onNext} className="firstForm">
+                    <FontAwesomeIcon icon={faTimes} className="close" onClick={this.onClose} />
                     <div className="recordVideo">
                         <p className="stepOne"><span className="color">Step 1:</span> Record a video message</p>
                         <div data-vjs-player>

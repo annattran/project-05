@@ -208,6 +208,18 @@ button[type=submit] {
     margin-top: 20px;
 }
 
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor:pointer;
+    transition: all .3s;
+}
+
+.close:hover {
+    color: #547972;
+}
+
 /* SECOND FORM ........................ */
 .secondForm {
     display:none;
