@@ -99,7 +99,7 @@ class Form extends Component {
         this.player.on('deviceError', () => {
             // console.error('device error:', this.player.deviceErrorCode);
         });
-        
+
     }
 
     componentWillUnmount() {
@@ -122,14 +122,14 @@ class Form extends Component {
         console.log(this.player.recordedData !== undefined)
         console.log(this.state.guestName !== '')
         console.log(this.state.guestComment !== '')
-        
+
         event.preventDefault();
         const nameToBeAdded = this.state.guestName;
         const commentToBeAdded = this.state.guestComment;
         const videoToBeAdded = this.state.videos;
         console.log(videoToBeAdded);
 
-        const formatDate = function(date) {
+        const formatDate = function (date) {
             const time = new Date(date);
             const hh = time.getHours();
             const mm = time.getMinutes();
@@ -146,11 +146,11 @@ class Form extends Component {
         }
 
         if (this.player.recordedData !== undefined
-            && this.state.guestName !== '' 
+            && this.state.guestName !== ''
             && this.state.guestComment !== '') {
-            firebase.database().ref().push({ 
-                'name': nameToBeAdded, 
-                'comment': commentToBeAdded, 
+            firebase.database().ref().push({
+                'name': nameToBeAdded,
+                'comment': commentToBeAdded,
                 'time': formatDate(Date.now()),
                 'video': videoToBeAdded
             })
@@ -177,15 +177,19 @@ class Form extends Component {
     render() {
         return (
             <form onSubmit={this.onSubmit}>
+                <p className="stepOne"><span className="color">Step 1:</span> Record a video message</p>
                 <div data-vjs-player>
                     <video id="myVideo" ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline></video>
                 </div>
-                
-                <label htmlFor="guestName"></label>
-                <input id="guestName" name="guestName" type="text" onChange={this.onChange} value={this.state.guestName} />
-                <label htmlFor="guestComment"></label>
-                <input id="guestComment" name="guestComment" type="text" onChange={this.onChange} value={this.state.guestComment} />
-                <button type="submit">Submit</button>
+                <div className="inputs">
+                    <p className="stepTwo"><span className="color">Step 2:</span> Write a comment and sign your name</p>
+                    <label htmlFor="guestComment">Message to the newly weds:</label>
+                    <textarea id="guestComment" name="guestComment" type="text" onChange={this.onChange} value={this.state.guestComment} />
+                    <label htmlFor="guestName">Signed:</label>
+                    <input id="guestName" name="guestName" type="text" onChange={this.onChange} value={this.state.guestName} />
+                    <p className="stepThree"><span className="color">Step 3:</span> Submit</p>
+                    <button type="submit">Submit</button>
+                </div>
             </form>
         )
     }
