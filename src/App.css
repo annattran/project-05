@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css?family=Lora|Open+Sans+Condensed:300|Rouge+Script&display=swap');
+
+/* font-family: 'Rouge Script', cursive;
+font-family: 'Lora', serif;
+font-family: 'Open Sans Condensed', sans-serif; */
+
+
+html {
+    font-size:125%;
+}
+
+img {
+    max-width:100%;
+}
+
+/* HEADER STYLES ------------------------------------------------------------- */
+header {
+    height:100vh;
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:center;
+    border: 1px solid red;
+    overflow:hidden;
+    position: relative;
+}
+
+h1, h2 {
+    margin: 0;
+    color:transparent;
+    -webkit-text-stroke: 1px rgba(0,0,0,.1);
+}
+
+h1 {
+    font-family: 'Lora', serif;
+    font-size:4rem;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: 'Lora', serif;
+    text-transform: uppercase;
+}
+
+header .button {
+    position:fixed;
+    right:40px;
+    top:20px;
+    z-index:1;
+}
+
+header button {
+    background:#547972;
+    padding: 10px 20px;
+    box-shadow: 3px 3px rgba(0,0,0,.5);
+    color:white;
+    cursor:pointer;
+    transition: all .3s;
+}
+
+header button:hover {
+    background:white;
+    color:#547972;
+    box-shadow:none;
+}
+
+header .title {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:relative;
+    top:30vh;
+    background: url(assets/foil.jpg);
+    background-position:center;
+    background-clip: text;
+    text-align:center;
+}
+
+header .instructions {
+    width:50%;
+    font-size:2rem;
+    font-family: 'Rouge Script', cursive;
+}
+
+header img.leaf {
+    width:300px;
+    position: absolute;
+    z-index:-1;
+    /* border: 1px solid red; */
+}
+
+header img.leaf.left {
+    transform: scaleY(-1);
+    transform: rotate(230deg);
+    top:-100px;
+}
+
+header img.leaf.right {
+    right:0;
+    bottom:-100px;
+    transform: scaleY(-1);
+    transform: rotate(50deg);
+}
