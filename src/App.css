@@ -122,14 +122,15 @@ header img.leaf.right {
 
 .writtenComment {
     margin-top: 5px;
+    display:flex;
+    flex-direction:column;
 }
 
 .timeStamp {
     padding: 5px;
     background:#547972;
     color:white;
-    display:inline-block;
-    float:right;
+    align-self:flex-end;
 }
 
 /* FORM STYLES ------------------------------------------------------------- */
@@ -148,25 +149,21 @@ button:hover {
     box-shadow:none;
 }
 
-button[type=submit] {
-    width: 150px;
-    align-self:center;
-    margin-top: 20px;
-}
-
 form {
     border: 1px solid rgba(0,0,0,.5);
     padding: 40px 0px;
-    margin:0 auto;
+    margin: 40px 0px;
     font-family: 'Roboto Condensed', sans-serif;
     width:500px;
-}
-
-form, .inputs {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    /* width:322px; */
+    /* display:none; */
+    position:fixed;
+    z-index:1;
+    max-width: 100%;
+    max-height:calc(100% - 80px);
+    overflow: auto;
+    background:white;
+    top:0;
+    left:calc(50% - 250px);
 }
 
 form div {
@@ -188,8 +185,38 @@ label, textarea, input, form p {
     width:400px;
 }
 
+span.color {
+    color:#547972;
+}
+
+
+/* FIRST FORM ........................ */
+.firstForm {
+    text-align:center;
+    display:none;
+}
+
 p.stepOne {
     padding-bottom: 10px;
+    text-align:center;
+}
+
+button[type=next],
+button[type=submit] {
+    width: 150px;
+    align-self:center;
+    margin-top: 20px;
+}
+
+/* SECOND FORM ........................ */
+.secondForm {
+    display:none;
+}
+
+.inputs {
+    flex-direction:column;
+    align-items:center;
+    display:flex;
 }
 
 p.stepTwo {
@@ -198,10 +225,6 @@ p.stepTwo {
 
 p.stepThree {
     padding-top: 20px;
-}
-
-span.color {
-    color:#547972;
 }
 
 

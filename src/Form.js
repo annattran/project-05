@@ -118,7 +118,23 @@ class Form extends Component {
         })
     }
 
+    onNext = (event) => {
+        event.preventDefault();
+        const firstForm = document.querySelector('.firstForm')
+        const secondForm = document.querySelector('.secondForm')
+
+        if (this.player.recordedData !== undefined) {
+            firstForm.style.display = 'none';
+            secondForm.style.display = 'flex';
+        } else {
+            alert(`No video recorded. Please try again.`);
+        }
+    }
+
     onSubmit = (event) => {
+        const secondForm = document.querySelector('.secondForm')
+        const commentButton = document.querySelector('.commentButton')
+
         console.log(this.player.recordedData !== undefined)
         console.log(this.state.guestName !== '')
         console.log(this.state.guestComment !== '')
@@ -160,6 +176,8 @@ class Form extends Component {
                 timeStamp: '',
                 video: this.player.record().reset()
             })
+            secondForm.style.display = 'none';
+            commentButton.style.display = 'block';
         } else {
             alert('Please record a video message and add your name and comment to our guestbook!')
         }
@@ -176,21 +194,28 @@ class Form extends Component {
 
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
-                <p className="stepOne"><span className="color">Step 1:</span> Record a video message</p>
-                <div data-vjs-player>
-                    <video id="myVideo" ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline></video>
-                </div>
-                <div className="inputs">
-                    <p className="stepTwo"><span className="color">Step 2:</span> Write a comment and sign your name</p>
-                    <label htmlFor="guestComment">Message to the newly weds:</label>
-                    <textarea id="guestComment" name="guestComment" type="text" onChange={this.onChange} value={this.state.guestComment} />
-                    <label htmlFor="guestName">Signed:</label>
-                    <input id="guestName" name="guestName" type="text" onChange={this.onChange} value={this.state.guestName} />
-                    <p className="stepThree"><span className="color">Step 3:</span> Submit</p>
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
+            <div className="forms">
+                <form onSubmit={this.onNext} className="firstForm">
+                    <div className="recordVideo">
+                        <p className="stepOne"><span className="color">Step 1:</span> Record a video message</p>
+                        <div data-vjs-player>
+                            <video id="myVideo" ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline></video>
+                        </div>
+                        <button type="next">Next</button>
+                    </div>
+                </form>
+                <form onSubmit={this.onSubmit} className="secondForm">
+                    <div className="inputs">
+                        <p className="stepTwo"><span className="color">Step 2:</span> Write a comment and sign your name</p>
+                        <label htmlFor="guestComment">Message to the newly weds:</label>
+                        <textarea id="guestComment" name="guestComment" type="text" onChange={this.onChange} value={this.state.guestComment} />
+                        <label htmlFor="guestName">Signed:</label>
+                        <input id="guestName" name="guestName" type="text" onChange={this.onChange} value={this.state.guestName} />
+                        <p className="stepThree"><span className="color">Step 3:</span> Submit</p>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
         )
     }
 }

@@ -5,12 +5,16 @@ import leaf from './assets/leaf-01.png';
 
 class Header extends Component {
 
-    onClick = (event) => {
-        const form = document.querySelector('form')
-        if (form.style.display === 'none') {
-            form.style.display = 'block';
+    onComment = (event) => {
+        const firstForm = document.querySelector('.firstForm')
+        const commentButton = document.querySelector('.commentButton')
+
+        if (firstForm.style.display === 'none') {
+            firstForm.style.display = 'flex';
+            commentButton.style.display = 'none';
         } else {
-            form.style.display = 'none';
+            firstForm.style.display = 'none';
+            commentButton.style.display = 'block';
         }
     }
 
@@ -20,7 +24,7 @@ class Header extends Component {
                 <img src={leaf} className="left leaf" alt="Green leaves in watercolor - positioned on the top left corner to frame the title." />
                 <img src={leaf} className="right leaf" alt="Green leaves in watercolor - positioned on the bottom right corner to frame the title. " />
                 <div className="button">
-                    <button onClick={this.onClick}> Add Comment</button>
+                    <button onClick={this.onComment} className="commentButton"> Add Comment</button>
                 </div>
                 <div className="title">
                     <h1>Kelvin ❤ Karen</h1>
