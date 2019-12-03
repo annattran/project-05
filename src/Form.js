@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css'
 import firebase from './firebase.js';
-
+// register videojs
 import 'video.js/dist/video-js.css';
 import videojs from 'video.js';
 import 'webrtc-adapter';
@@ -9,11 +9,15 @@ import RecordRTC from 'recordrtc';
 // register videojs-record plugin with this import
 import 'videojs-record/dist/css/videojs.record.css';
 import Record from 'videojs-record/dist/videojs.record.js';
-
+// register fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+// register sweetalerts2
+import Swal from 'sweetalert2';
+// register animate on scroll
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-import Swal from 'sweetalert2'
 
 class Form extends Component {
     constructor() {
@@ -49,7 +53,7 @@ class Form extends Component {
             // recordedData is a blob object containing the recorded data that
             // can be downloaded by the user, stored on server etc.
 
-            Swal.fire('Thank you for your video! Please wait until the video is done uploading before clicking submit!')
+            Swal.fire('', 'Thank you for your video! Please wait until the video is done uploading before clicking submit!', 'info')
 
             const file = this.player.recordedData;
             const storageRef = firebase.storage().ref();
@@ -92,6 +96,10 @@ class Form extends Component {
         this.player.on('deviceError', () => {
         });
 
+        // initialize animate on scroll
+        AOS.init({
+            duration: 1200,
+        })
     }
 
     componentWillUnmount() {
@@ -124,6 +132,7 @@ class Form extends Component {
     onClose = (event) => {
         const firstForm = document.querySelector('.firstForm')
         const commentButton = document.querySelector('.commentButton')
+
         if (this.player.recordedData === undefined) {
             firstForm.style.display = 'none';
             commentButton.style.display = 'block';
@@ -135,13 +144,12 @@ class Form extends Component {
     }
 
     onSubmit = (event) => {
-        const secondForm = document.querySelector('.secondForm')
-        const commentButton = document.querySelector('.commentButton')
-
         event.preventDefault();
         const nameToBeAdded = this.state.guestName;
         const commentToBeAdded = this.state.guestComment;
         const videoToBeAdded = this.state.videos;
+        const secondForm = document.querySelector('.secondForm')
+        const commentButton = document.querySelector('.commentButton')
 
         const formatDate = function (date) {
             const time = new Date(date);

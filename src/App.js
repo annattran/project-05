@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-
 import firebase from './firebase.js';
+// import components
 import Header from './Header.js';
 import Form from './Form.js';
 import List from './List.js';

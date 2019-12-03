@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css'
-import leaf from './assets/leaf-01.png';
-
+import leaf from './assets/leaf.png';
 
 class Header extends Component {
 

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import './App.css'
 
-
 class List extends Component {
     render() {
         return (
-            <ul className="commentsSection">
+            <ul className="commentsSection" data-aos="zoom-in">
                 {this.props.listItems.map((item, i) => {
                     return (
                         <li key={i} className="commentCard">
