@@ -255,3 +255,37 @@ footer {
         font-size:100%;
     }
 }
+
+@media (max-width:745px) {
+    header img.leaf {
+        width: 250px;
+    }
+    header .title {
+        top: 25vh;
+    }
+    header .instructions {
+        width: 60%;
+    }
+}
+
+@media (max-width:568px) {
+    header .title {
+        top: 15vh;
+    }
+}
+
+@media (max-width:530px) {
+    header .instructions {
+        width: 70%;
+    }
+    form {
+        width:410px;
+        left:calc(50% - 205px);
+    }
+    label, textarea, input, form p {
+        width:320px;
+    }
+}
+
+/* OPTIMIZED DOWN TO SMALL TABLETS... */
+/* NOT RECOMMENDED FOR MOBILE USE */
