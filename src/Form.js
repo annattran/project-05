@@ -13,6 +13,8 @@ import Record from 'videojs-record/dist/videojs.record.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
+import Swal from 'sweetalert2'
+
 class Form extends Component {
     constructor() {
         super();
@@ -47,7 +49,7 @@ class Form extends Component {
             // recordedData is a blob object containing the recorded data that
             // can be downloaded by the user, stored on server etc.
 
-            alert('Thank you for your video! Please wait until the video is done uploading before clicking submit!')
+            Swal.fire('Thank you for your video! Please wait until the video is done uploading before clicking submit!')
 
             const file = this.player.recordedData;
             const storageRef = firebase.storage().ref();
@@ -66,6 +68,7 @@ class Form extends Component {
                 // Observe state change events such as progress, pause, and resume
                 // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                // stretch goal: make progress bar
                 switch (snapshot.state) {
                     case firebase.storage.TaskState.PAUSED:
                         break;
@@ -73,9 +76,9 @@ class Form extends Component {
                         break;
                 }
             }, function (error) {
-                alert('Video did not upload successfully.')
+                Swal.fire('', 'Video did not upload successfully.', 'error')
             }, function () {
-                alert('Video is done uploading. You may now click submit.')
+                Swal.fire('', 'Video is done uploading. You may now click submit.', 'success')
             });
 
             this.setState({
@@ -114,7 +117,7 @@ class Form extends Component {
             firstForm.style.display = 'none';
             secondForm.style.display = 'flex';
         } else {
-            alert(`No video recorded. Please try again.`);
+            Swal.fire('', 'No video recorded. Please try again.', 'warning');
         }
     }
 
@@ -178,7 +181,7 @@ class Form extends Component {
             secondForm.style.display = 'none';
             commentButton.style.display = 'block';
         } else {
-            alert('Please record a video message and add your name and comment to our guestbook!')
+            Swal.fire('', 'One or more fields are empty.', 'warning')
         }
     }
 

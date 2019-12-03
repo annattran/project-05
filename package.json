@@ -11,6 +11,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "3.2.0",
+    "sweetalert2": "^9.4.1",
     "videojs-record": "^3.8.0"
   },
   "scripts": {

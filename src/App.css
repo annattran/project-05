@@ -72,11 +72,9 @@ header .title {
 }
 
 header .instructions {
-    max-width:80%;
-    width:625px;
+    width:50%;
     font-size:2rem;
     font-family: 'Rouge Script', cursive;
-    border: 1px solid blue;
 }
 
 header img.leaf {
