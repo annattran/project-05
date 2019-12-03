@@ -72,9 +72,11 @@ header .title {
 }
 
 header .instructions {
-    width:50%;
+    max-width:80%;
+    width:625px;
     font-size:2rem;
     font-family: 'Rouge Script', cursive;
+    border: 1px solid blue;
 }
 
 header img.leaf {
@@ -156,7 +158,6 @@ form {
     margin: 40px 0px;
     font-family: 'Roboto Condensed', sans-serif;
     width:500px;
-    /* display:none; */
     position:fixed;
     z-index:1;
     max-width: 100%;
@@ -246,4 +247,13 @@ footer {
     text-align:center;
     padding: 20px 0px;
     font-family: 'Roboto Condensed', sans-serif;
+}
+
+
+/* MEDIA QUERIES ------------------------------------------------------------- */
+
+@media (max-width:1280px) {
+    html {
+        font-size:100%;
+    }
 }

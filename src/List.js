@@ -18,7 +18,6 @@ class List extends Component {
                                 <p>{item.guestComment}</p>
                                 <p>— {item.guestName}</p>
                                 <p className="timeStamp">{item.timeStamp}</p>
-                                {/* <div>{item.videoURL}</div> */}
                             </div>
                         </li>
                     )

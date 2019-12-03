@@ -32,7 +32,6 @@ class App extends Component {
           videoURL: snapshot.child(key).child('video').child([0]).val()
         }
         newComments.push(commentObject);
-        // console.log(newComments)
       }
 
       this.setState({

@@ -36,22 +36,19 @@ class Form extends Component {
 
         // device is ready
         this.player.on('deviceReady', () => {
-            // console.log('device is ready!');
         });
 
         // user clicked the record button and started recording
         this.player.on('startRecord', () => {
-            // console.log('started recording!');
         });
 
         // user completed recording and stream is available
         this.player.on('finishRecord', () => {
             // recordedData is a blob object containing the recorded data that
             // can be downloaded by the user, stored on server etc.
-            // console.log('finished recording: ', this.player.recordedData);
 
             alert('Thank you for your video! Please wait until the video is done uploading before clicking submit!')
-            // this.player.record().saveAs({ 'video': 'my-video-file-name.webm' });
+
             const file = this.player.recordedData;
             const storageRef = firebase.storage().ref();
             const videoID = file.name;
@@ -60,9 +57,7 @@ class Form extends Component {
 
             const newURLS = [];
             upload.then((snapshot) => {
-                // console.log('uploaded a blob file!')
                 snapshot.ref.getDownloadURL().then((url) => {
-                    // console.log(url);
                     newURLS.push(url);
                 });
             });
@@ -70,14 +65,11 @@ class Form extends Component {
             upload.on('state_changed', function (snapshot) {
                 // Observe state change events such as progress, pause, and resume
                 // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                console.log('Upload is ' + progress + '% done');
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 switch (snapshot.state) {
-                    case firebase.storage.TaskState.PAUSED: // or 'paused'
-                        console.log('Upload is paused');
+                    case firebase.storage.TaskState.PAUSED:
                         break;
-                    case firebase.storage.TaskState.RUNNING: // or 'running'
-                        console.log('Upload is running');
+                    case firebase.storage.TaskState.RUNNING:
                         break;
                 }
             }, function (error) {
@@ -86,7 +78,6 @@ class Form extends Component {
                 alert('Video is done uploading. You may now click submit.')
             });
 
-            // console.log(newURLS);
             this.setState({
                 videos: newURLS
             })
@@ -94,11 +85,8 @@ class Form extends Component {
 
         // error handling
         this.player.on('error', (element, error) => {
-            // console.warn(error);
         });
-
         this.player.on('deviceError', () => {
-            // console.error('device error:', this.player.deviceErrorCode);
         });
 
     }
@@ -112,8 +100,6 @@ class Form extends Component {
     onChange = (event) => {
         let name = event.target.name;
         let value = event.target.value;
-        // console.log('name', name);
-        // console.log('value', value);
         this.setState({
             [name]: value
         })
@@ -138,7 +124,7 @@ class Form extends Component {
         if (this.player.recordedData === undefined) {
             firstForm.style.display = 'none';
             commentButton.style.display = 'block';
-        } else if (window.confirm('You recorded a video but have not submitted. Click ok if you wish to cancel.') === true) {
+        } else if (window.confirm('You recorded a video but have not submitted. Clicking ok will erase your video.') === true) {
             firstForm.style.display = 'none';
             commentButton.style.display = 'block';
             this.player.record().reset();
@@ -149,15 +135,10 @@ class Form extends Component {
         const secondForm = document.querySelector('.secondForm')
         const commentButton = document.querySelector('.commentButton')
 
-        console.log(this.player.recordedData !== undefined)
-        console.log(this.state.guestName !== '')
-        console.log(this.state.guestComment !== '')
-
         event.preventDefault();
         const nameToBeAdded = this.state.guestName;
         const commentToBeAdded = this.state.guestComment;
         const videoToBeAdded = this.state.videos;
-        console.log(videoToBeAdded);
 
         const formatDate = function (date) {
             const time = new Date(date);
@@ -171,10 +152,10 @@ class Form extends Component {
                 dd = "PM";
             }
             if (h === 0) {
-                h = 12
+                h = 12;
             }
-            if (m.length === 1) {
-                m = '0' + mm
+            if (m < 10) {
+                m = "0" + mm;
             }
             return `${h}:${m} ${dd}`
         }
@@ -198,14 +179,6 @@ class Form extends Component {
             commentButton.style.display = 'block';
         } else {
             alert('Please record a video message and add your name and comment to our guestbook!')
-        }
-
-        // const videoComment = document.getElementsByClassName('videoComment')
-        // console.log(videoComment);
-        if (this.player.recordedData === undefined) {
-            console.log('no video')
-        } else {
-            console.log('there is a video')
         }
     }
 

@@ -3,7 +3,7 @@ import './App.css'
 
 class Footer extends Component {
     render() {
-        return(
+        return (
             <footer>
                 <p>Wedding Guestbook - Copyright © 2019</p>
             </footer>
