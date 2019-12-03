@@ -26,7 +26,7 @@ class Header extends Component {
                     <button onClick={this.onComment} className="commentButton"> Add Comment</button>
                 </div>
                 <div className="title">
-                    <h1>Kelvin ❤ Karen</h1>
+                    <h1>Jack ❤ Jill</h1>
                     <h2>November 28th 2019</h2>
                     <div className="instructions">
                         <p>Record a video with your well wishes, something funny, words of advice, or maybe date night ideas. When we look back we'll be reminded of all the people who helped celebrate our special day.</p>
