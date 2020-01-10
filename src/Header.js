@@ -8,11 +8,11 @@ class Header extends Component {
         const firstForm = document.querySelector('.firstForm')
         const commentButton = document.querySelector('.commentButton')
 
-        if (firstForm.style.display === 'none') {
-            firstForm.style.display = 'flex';
+        firstForm.style.display = 'flex';
+
+        if (firstForm.style.display === 'flex') {
             commentButton.style.display = 'none';
         } else {
-            firstForm.style.display = 'none';
             commentButton.style.display = 'block';
         }
     }
