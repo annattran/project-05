@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/project-05-anna-tran/static/css/main.2939f246.chunk.css",
-    "main.js": "/project-05-anna-tran/static/js/main.29116f22.chunk.js",
-    "main.js.map": "/project-05-anna-tran/static/js/main.29116f22.chunk.js.map",
-    "runtime-main.js": "/project-05-anna-tran/static/js/runtime-main.1a95aaea.js",
-    "runtime-main.js.map": "/project-05-anna-tran/static/js/runtime-main.1a95aaea.js.map",
-    "static/css/2.ba38f8e4.chunk.css": "/project-05-anna-tran/static/css/2.ba38f8e4.chunk.css",
-    "static/js/2.b6ec7c75.chunk.js": "/project-05-anna-tran/static/js/2.b6ec7c75.chunk.js",
-    "static/js/2.b6ec7c75.chunk.js.map": "/project-05-anna-tran/static/js/2.b6ec7c75.chunk.js.map",
-    "index.html": "/project-05-anna-tran/index.html",
-    "precache-manifest.cfd1a014182a4b791e8706f63ad9ee06.js": "/project-05-anna-tran/precache-manifest.cfd1a014182a4b791e8706f63ad9ee06.js",
-    "service-worker.js": "/project-05-anna-tran/service-worker.js",
-    "static/css/2.ba38f8e4.chunk.css.map": "/project-05-anna-tran/static/css/2.ba38f8e4.chunk.css.map",
-    "static/css/main.2939f246.chunk.css.map": "/project-05-anna-tran/static/css/main.2939f246.chunk.css.map",
-    "static/media/App.css": "/project-05-anna-tran/static/media/foil.abdb6236.jpg",
-    "static/media/leaf.png": "/project-05-anna-tran/static/media/leaf.59ff8a6c.png"
+    "main.css": "/weddingGuestbook/static/css/main.54e1b331.chunk.css",
+    "main.js": "/weddingGuestbook/static/js/main.42080cc5.chunk.js",
+    "main.js.map": "/weddingGuestbook/static/js/main.42080cc5.chunk.js.map",
+    "runtime-main.js": "/weddingGuestbook/static/js/runtime-main.e87700c3.js",
+    "runtime-main.js.map": "/weddingGuestbook/static/js/runtime-main.e87700c3.js.map",
+    "static/css/2.ba38f8e4.chunk.css": "/weddingGuestbook/static/css/2.ba38f8e4.chunk.css",
+    "static/js/2.24fb4247.chunk.js": "/weddingGuestbook/static/js/2.24fb4247.chunk.js",
+    "static/js/2.24fb4247.chunk.js.map": "/weddingGuestbook/static/js/2.24fb4247.chunk.js.map",
+    "index.html": "/weddingGuestbook/index.html",
+    "precache-manifest.3c7a3e0ee33ac74255f05e6b884b71fe.js": "/weddingGuestbook/precache-manifest.3c7a3e0ee33ac74255f05e6b884b71fe.js",
+    "service-worker.js": "/weddingGuestbook/service-worker.js",
+    "static/css/2.ba38f8e4.chunk.css.map": "/weddingGuestbook/static/css/2.ba38f8e4.chunk.css.map",
+    "static/css/main.54e1b331.chunk.css.map": "/weddingGuestbook/static/css/main.54e1b331.chunk.css.map",
+    "static/media/App.css": "/weddingGuestbook/static/media/foil.abdb6236.jpg",
+    "static/media/leaf.png": "/weddingGuestbook/static/media/leaf.59ff8a6c.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.1a95aaea.js",
+    "static/js/runtime-main.e87700c3.js",
     "static/css/2.ba38f8e4.chunk.css",
-    "static/js/2.b6ec7c75.chunk.js",
-    "static/css/main.2939f246.chunk.css",
-    "static/js/main.29116f22.chunk.js"
+    "static/js/2.24fb4247.chunk.js",
+    "static/css/main.54e1b331.chunk.css",
+    "static/js/main.42080cc5.chunk.js"
   ]
 }
